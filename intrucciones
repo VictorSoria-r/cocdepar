@@ -1,0 +1,38 @@
+Crear network
+
+docker network create coderPadNetwork
+
+-------------------------------------------------------------------------
+
+Crear contenedor base de datos mssql/server
+
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=12345678" --network coderPadNetwork -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+
+-----------------------------------------------------------------
+Construccion de la imagen bussines-client-v1 (ubicarse en la raiz del repositorio al nivel del dockerFile para poder ejecutarlo)
+
+docker build -t bussines-client-v1 .
+
+Crear el contenedor
+
+docker run --network coderpadNetwork --name c-bussines-client-v1 -d -p 8090:8090 bussines-client-v1
+
+----------------------------------------------------------------------------
+
+Construccion de la imagen bussines-account-v1 (ubicarse en la raiz del repositorio al nivel del dockerFile para poder ejecutarlo)
+
+docker build -t bussines-account-v1 .
+
+Crear el contenedor
+
+docker run --network coderpadNetwork --name c-bussines-account-v1 -d -p 8091:8091 bussines-account-v1
+
+
+
+----------------------------------------------------------------------------------
+colocar en el archivo properties en la url de base de datos el nombre del contenedor de base de datos
+nombre del contenedor: sweet_babbage
+  datasource:
+    url: jdbc:sqlserver://sweet_babbage:1433;database=coderpad;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 12345678

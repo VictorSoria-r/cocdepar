@@ -158,7 +158,36 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"clientId\": 1,\r\n    \"accountNumber\": \"12345645790406103\",\r\n    \"accountTypeCode\":\"01\",\r\n    \"initialBalance\": 1000\r\n}",
+							"raw": "{\r\n    \"clientId\": 1,\r\n    \"accountNumber\": \"12345645790406104\",\r\n    \"accountTypeCode\":\"01\",\r\n    \"initialBalance\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\": 1,\r\n    \"accountNumber\": \"12345645790406104\",\r\n    \"accountTypeCode\":\"01\",\r\n    \"initialBalance\": 500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
